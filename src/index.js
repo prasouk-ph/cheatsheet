@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Layout from './components/utils/Layout/Layout'
-import Home from './components/pages/Home/Home';
+// import Home from './components/pages/Home/Home';
 import ReactJs from './components/pages/ReactJs/ReactJs'
 import NotFoundPage from './components/pages/NotFoundPage/NotFoundPage';
 import './index.css';
@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<ReactJs />} />
           <Route path="/react" element={<ReactJs />} />
           <Route path="*" element={<NotFoundPage />}/>
         </Route>
