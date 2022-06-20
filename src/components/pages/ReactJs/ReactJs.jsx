@@ -7,21 +7,21 @@ function ReactJs() {
   const utilisationContent = reactContent.filter(content => content.category === "Utilisation")
 
   return (
-    <main>
+    <main className='page-main'>
       <h1>Cheatsheet ReactJS</h1>
       <p>Sur cette page vous trouverez le cheatsheet de React</p>
 
       <h2>Installation</h2>
       <div className='block-container'>
         {installationContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntax={content.syntax} syntaxComments={content.syntaxComments} exemples={content.exemples} exemplesComments={content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Utilisation</h2>
       <div className='block-container'>
         {utilisationContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntax={content.syntax} syntaxComments={content.syntaxComments} exemples={content.exemples} exemplesComments={content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
