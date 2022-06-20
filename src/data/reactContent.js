@@ -1,18 +1,22 @@
 export const reactContent = [
   {
     title: "Pour installer",
-    syntax: "npx create-react-app nom-du-projet",
-    exemples: `npx create-react-app cheatsheet-project`,
+    syntax: ["npx create-react-app nom-du-projet"],
+    exemples: [`npx create-react-app cheatsheet-project`],
     category: "Installation",
   },
   {
     title: "Composant fonction",
     syntax: 
-`function NomDeLaFonction(propsSiBesoin) {
+[`function NomDeLaFonction(propsSiBesoin) {
   return (jsx)
 }`,
+`const NomDeLaFonction = (propsSiBesoin) =>
+  jsx
+`
+],
     syntaxComments: "Demande de comprendre le cycle de vie des composants",
-    exemples: 
+    exemples: [
 `function Header({name}) {
   const duration = 10 + 5
 
@@ -20,25 +24,34 @@ export const reactContent = [
     <div>
       <h1>La maison jungle</h1>
       <p>Appartient à { name } depuis { duration } min</p>
-    </div>)
+    </div>
+  )
 }`,
+`const NomDeLaFonction = (propsSiBesoin) => 
+  <div>
+    <h1>La maison jungle</h1>
+    <p>Appartient à { name } depuis { duration } min</p>
+  </div>
+}`],
     exemplesComments: "Commentaires",
     category: "Utilisation"
   },
   {
     title: "Composant class",
-    syntax:
+    syntax: [
 `class NomDeLaClasse extends React.Component {
   render() {
     jsx
   }
-}`,
-    exemples:
+}`
+],
+    exemples: [
 `class MyComponent extends React.Component {
   render() {
     return <h1>Bonjour, {this.props.name}</h1>;
   }
-}`,
+}`
+],
     category: "Utilisation"
   }
 ]
