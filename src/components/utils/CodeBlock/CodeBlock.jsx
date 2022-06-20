@@ -7,13 +7,13 @@ function CodeBlock({ title, syntax, syntaxComments, exemples, exemplesComments }
   return (
     <div className='block'>
         <h3>{title}</h3>
-      <blockquote>{syntax}</blockquote>
+      <pre>{syntax}</pre>
       {syntaxComments && <p>{syntaxComments}</p>}
       
       {exemples && <button onClick={() => setIsActive(!isActive)}>{isActive ? "Masquer" : "Afficher"} les exemples</button>}
       {isActive &&
         <div>
-          <blockquote>{exemples}</blockquote>
+          <pre>{exemples}</pre>
           {exemplesComments && <p>{exemplesComments}</p>}
         </div>
         }

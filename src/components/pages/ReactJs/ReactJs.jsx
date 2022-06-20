@@ -9,7 +9,7 @@ function ReactJs() {
   return (
     <main>
       <h1>Cheatsheet ReactJS</h1>
-      <p>Sur cette page vous trouverez le cheatsheet de React</p>
+      <p>Sur cette page vous trouverez le cheatsheet \n de React</p>
 
       <h2>Installation</h2>
       <div className='block-container'>

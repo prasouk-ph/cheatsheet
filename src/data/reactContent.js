@@ -6,23 +6,38 @@ export const reactContent = [
   },
   {
     title: "Composant fonction",
-    syntax: "function NomDeLaFonction(propsSiBesoin) { return (jsx)}",
+    syntax: `
+    function NomDeLaFonction(propsSiBesoin) {
+      return (jsx)
+    }`,
     syntaxComments: "Demande de comprendre le cycle de vie des composants",
-    exemples: "function Header({name}) {",
+    exemples: `
+    function Header({name}) {
+      const duration = 10 + 5
+  
+      return (
+        <div>
+          <h1>La maison jungle</h1>
+          <p>Appartient à { name } depuis { duration } min</p>
+        </div>)
+    }`,
     exemplesComments: "Commentaires",
     category: "Utilisation"
   },
   {
     title: "Composant class",
-    syntax: "function NomDeLaFonction(propsSiBesoin) { return (jsx)}",
-    exemples: "function Header({name}) {",
-    category: "Utilisation"
-  },
-  {
-    title: "Composant class",
-    syntax: "function NomDeLaFonction(propsSiBesoin) { return (jsx)}",
-    exemples: "function Header({name}) {",
-    exemplesComments: "Commentaires",
+    syntax: `
+    class NomDeLaClasse extends React.Component {
+      render() {
+        jsx
+      }
+    }`,
+    exemples: `
+    class MyComponent extends React.Component {
+      render() {
+        return <h1>Bonjour, {this.props.name}</h1>;
+      }
+    }`,
     category: "Utilisation"
   }
 ]
