@@ -5,20 +5,12 @@ export const reactContent = [
       syntaxes: [
         {
           code: "npx create-react-app nom-du-projet",
-        },
-        {
-          code: "npx create-react-app nom-du-projet",
-          comments: "Doublon"
-        },
+        }
       ],
       exemples: [
         {
           code: "npx create-react-app cheatsheet-react",
           comments: "Le projet s'appelle cheatsheet-react"
-        },
-        {
-          code: "npx create-react-app cheatsheet-react",
-          comments: "Doublon"
         }
       ]
     },
@@ -31,18 +23,27 @@ export const reactContent = [
         {
           code:
 `function NomDeLaFonction(propsSiBesoin) {
-  return (jsx)
-}`,
+  return (
+    <baliseBlock>
+      <balise>Content {1+2}<balise/>
+      <balise>Another Content<balise/>
+    </baliseBlock>
+  )
+}
+
+export default NomDeLafonction`,
+          comments:
+`
+Si plusieurs balises, obligation d'englober le tout dans une balise de type block
+`
         },
         {
           code:
 `const NomDeLaFonction = (propsSiBesoin) =>
-  jsx
-}`,
-          comments:
-`
-Autres
-`
+  <baliseInline></baliseInline>
+}
+
+export default NomDeLafonction`
         }
       ],
       exemples: [
@@ -57,10 +58,29 @@ Autres
       <p>Appartient à { name } depuis { duration } min</p>
     </div>
   )
-}`,
+}
+
+export default Header`,
           comments:
 `
 Permet l'utilisation des hooks
+`
+        },
+        {
+          code:
+`export default function Header({name}) {
+  const duration = 10 + 5
+
+  return (
+    <div>
+      <h1>La maison jungle</h1>
+      <p>Appartient à { name } depuis { duration } min</p>
+    </div>
+  )
+}`,
+          comments:
+`
+On peut utiliser n'importe quel syntaxe d'export
 `
         },
         {
@@ -70,11 +90,9 @@ Permet l'utilisation des hooks
     <h1>La maison jungle</h1>
     <p>Appartient à { name } depuis { duration } min</p>
   </div>
-}`,
-          comments:
-`
-Demande de comprendre le cycle 
-de vie des composants
+}
+
+export default NomDeLaClasse
 `
         }
       ],
@@ -89,12 +107,18 @@ de vie des composants
           code:
 `class NomDeLaClasse extends React.Component {
   render() {
-    jsx
-  }
-}`,
+    return <baliseBlock>
+      <balise>Content {1+2}<balise/>
+      <balise>Another Content<balise/>
+    </baliseBlock>
+  )
+}
+
+export default NomDeLaClasse`,
           comments:
 `
-Autres
+Demande de comprendre le cycle 
+de vie des composants
 `
         }
       ],
@@ -105,11 +129,9 @@ Autres
   render() {
     return <h1>Bonjour, {this.props.name}</h1>;
   }
-}`,
-          comments:
-`
-Permet l'utilisation des hooks
-`
+}
+
+export default Mycomponent`
         }
       ],
     },

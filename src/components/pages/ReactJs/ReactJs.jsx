@@ -8,7 +8,7 @@ function ReactJs() {
 
   return (
     <main className='page-main'>
-      <h1>Cheatsheet ReactJS</h1>
+      <h1>Aide-mémoire ReactJS</h1>
       <p>Sur cette page vous trouverez le cheatsheet de React</p>
 
       <h2>Installation</h2>
@@ -25,7 +25,7 @@ function ReactJs() {
         )}
       </div>
 
-      <h3>Hooks</h3>
+      <h2>Hooks</h2>
     </main>
   );
 }
