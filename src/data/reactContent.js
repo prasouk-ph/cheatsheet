@@ -17,7 +17,7 @@ export const reactContent = [
     category: "Installation"
   },
   {
-    title: "Composant fonction",
+    title: "Créer composant fonction",
     content: {
       syntaxes: [
         {
@@ -100,7 +100,7 @@ export default NomDeLaClasse
     category: "Utilisation"
   },
   {
-    title: "Composant class",
+    title: "Créer composant class",
     content: {
       syntaxes: [
         {

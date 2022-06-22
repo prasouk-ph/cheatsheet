@@ -12,3 +12,12 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+.comments {
+  font-style: italic;
+}
+
+.code-illustration {
+  border-bottom: 1px solid black;
+  margin: 10px 0;
+}
