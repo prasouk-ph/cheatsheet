@@ -25,7 +25,7 @@ export const reactContent = [
 `
 import ComposantProvenantDunAutreFichier from 'cheminDuComposant'
 
-function NomDeLaFonction(propsSiBesoin) {
+function NomDeLaFonction(propsOptionnel) {
   return (
     <baliseBlock>
       <balise>Content {1+2}<balise/>
@@ -41,7 +41,7 @@ export default NomDeLafonction`,
         },
         {
           code:
-`const NomDeLaFonction = (propsSiBesoin) =>
+`const NomDeLaFonction = (propsOptionnel) =>
   <baliseInline>{appelDeLaProps}</baliseInline>
 }
 
@@ -87,7 +87,7 @@ export default Header`,
         },
         {
           code:
-`const NomDeLaFonction = (propsSiBesoin) => 
+`const NomDeLaFonction = (propsOptionnel) => 
   <div>
     <h1>La maison jungle</h1>
     <p>Appartient à {name} depuis {duration} min</p>
@@ -524,7 +524,7 @@ Card.propTypes = {
         {
           code:
 `function Composant() {
-  function handleNomEvénément(événementPasséParDéfaut, paramétreSupplémentaireSiBesoin) {
+  function handleNomEvénément(événementPasséParDéfaut, paramétreOptionnel1) {
     instructions
   }
 
@@ -541,7 +541,7 @@ Card.propTypes = {
   const argument = valeurDeL'Argument
 
   return (
-    <balise onEvénément={() => handleNomEvénément(argument)}>Contenu de la balise</balise>
+    <balise onEvénément={(argument) => handleNomEvénément(argument)}>Contenu de la balise</balise>
   )
 }`,
           comments:
@@ -656,5 +656,418 @@ function Cart({ cart, setCart }) {
       ],
     },
     category: "Hooks"
+  },
+  {
+    title: "Utiliser useContext",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import React, { createContext } from "react";
+
+export const NomDuContext = createContext(valeurParDéfaut);
+
+function Composant() {
+  const propsATransmette = valeurDeLaProps
+
+  return (
+    <NomDuContext.Provider value={propsATransmette}>
+      <AutreComposant />
+    </NomDuContext.Provider>
+  )
+}
+
+// Dans un autre fichier :
+import React, { useContext } from "react";
+
+function AutreComposant() {
+  const propsARécupérer = useContext(NomDuContext);
+
+  return (
+    jsx
+  )
+}`,
+          comments: 
+`On ajoute export à NomDuContext si on compte l'utiliser dans un autre fichier
+NomDuContext se trouve en dehors du composant
+La props value dans le provider est obligatoire
+`
+        },
+        {
+          code:
+`import React, { createContext } from "react";
+
+export const NomDuContext1 = createContext(valeurParDéfaut);
+export const NomDuContext2 = createContext(valeurParDéfaut);
+
+function Composant() {
+  const propsATransmette1PourContext1 = valeurDeLaProps
+  const propsATransmette2PourContext1 = valeurDeLaProps
+  const propsATransmettePourContext2 = valeurDeLaProps
+
+  return (
+    <NomDuContext1.Provider value={clef1: propsATransmette1PourContext1, clef2: propsATransmette2PourContext1}>
+      <NomDuContext2.Provider value={propsATransmettePourContext2}>
+        <AutreComposant />
+      </NomDuContext2.Provider>
+    </NomDuContext1.Provider>
+  )
+}
+
+// Dans un autre fichier :
+import React, { useContext } from "react";
+
+function AutreComposant() {
+  const {clef1, clef2} = useContext(NomDuContext1);
+  const propsARécupérer = useContext(NomDuContext2);
+
+  return (
+    jsx
+  )
+}`,
+          comments:
+`On sépare les context par catégorie
+Si plusieurs valeurs à partager dans le même context, il faudra les mettre dans un objet pour y accéder par la suite
+Si on veut partager plusieurs context, il faudra les imbriquer à la suite`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`import React, { createContext } from "react";
+
+export const UserContext = createContext('');
+
+function App() {
+  const userName = "Superman"
+
+  return (
+    <UserContext.Provider value={userName}>
+      <UserCard />
+      <Menu />
+    </UserContext.Provider>
+  )
+}
+
+// Dans un autre fichier :
+import React, { useContext } from "react";
+
+function UserCard() {
+  const userName = useContext(UserContext);
+
+  return (
+    <p>{userName}</p>
+  )
+}`,
+          comments: 
+`Une valeur par défaut du context est généralement inutile
+Mais peut être utile pour éviter des erreurs dans la console
+Avec de la déstructuration ou TypeScript `
+        },
+        {
+          code:
+`import React, { useState, createContext } from "react";
+
+export const LoginStateContext = createContext(false);
+export const UserContext = createContext(");
+
+function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [userFirstName, setUserFirstName] = useState("");
+  const [userLastName, setUserLastName] = useState("");
+
+  return (
+    <LoginStateContext.Provider value={isLoaded: isLoaded, setIsLoaded: setIsLoaded}>
+      <UserContext.Provider value={userFirstName: userFirstName, setUserFirstName: setUserFirstName, userLastName, setUserLastName}>
+        <HomePage />
+        <LoginPage />
+      </UserContext.Provider>
+    </LoginStateContext.Provider>
+  )
+}
+
+// Dans un autre fichier :
+import React, { useContext } from "react";
+
+function HomePage() {
+  const {isLogged} = useContext(LoginStateContext);
+  const {userFirstName, setUserFirstName, userLastName, setUserLastName} = useContext(UserContext);
+
+  return (
+    isLogged && (<p>Bonjour {userFirstName + " " + userLastName}</p>)
+  )
+}`,
+        }
+      ],
+    },
+    category: "Hooks"
+  },
+  {
+    title: "Utiliser useEffect",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import { useEffect } from 'react';
+
+function Composant() {
+  function fonctionALancerLorsDeUseEffect() {
+    instructions
+  }
+
+  useEffect(() => {
+    fonctionALancerLorsDeUseEffect()
+  }, [dépendance]);
+
+  return (
+    jsx
+  );
+}`,
+          comments:
+`La dépendance est optionnel, la fonction dans le useEffect se relance à chaque fois que la dépendance change
+Sans dépendance, elle se lancera à chaque nouveau rendu`
+        },
+        {
+          code:
+`import { useEffect } from 'react';
+
+function Composant() {
+
+  useEffect(() => {
+    () => {
+      instructions
+    }
+  });
+
+  return (
+    jsx
+  );
+}`,
+        }
+      ],
+      exemples: [
+        {
+          code:
+`import { useEffect, useContext } from 'react';
+
+function Home() {
+  const {userName} = useContext(UserStateContext);
+
+  function messageInConsole() {
+    console.log("Je me lance grâce au useEffect")
+    console.log("Je suis sur le compte de :")
+    console.log(userName)
+  }
+
+  useEffect(() => {
+    messageInConsole()
+  }, [userName]);
+
+  return (
+    <p>Bienvenue !</p>
+  );
+}`,
+        },
+        {
+          code:
+`import { useEffect, useContext } from 'react';
+
+function Home() {
+  const {userName} = useContext(UserStateContext);
+
+  useEffect(() => {
+    () => {
+      console.log("Je me lance grâce au useEffect")
+      console.log("Je suis sur le compte de :")
+      console.log(userName)
+    }
+  } []);
+
+  return (
+    <p>Bienvenue {userName}!</p>
+  );
+}`,
+          comments: "Avec une dépendance vide, le useEffect sera appelé seulement au 1er rendu"
+        }
+      ],
+    },
+    category: "Hooks"
+  },
+  {
+    title: "Utiliser useState",
+    content: {
+      syntaxes: [
+        {
+          code:
+`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
+        },
+        {
+          code:
+`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
+const nomDuState = nomDuContainerContenantLeState[0]
+const setnomDuState = nomDuContainerContenantLeState[1]`
+        },
+        {
+          code:
+`
+if (condition) {
+return (si oui)</p>
+}
+return (si non)
+`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function DadCard() {
+  const childCount = 2
+
+  return (<p>{childCount > 0 ?
+    "Il a un ou plusieurs enfants"
+    : "Il n'a pas d'enfant"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+return (<p>{childCount > 0 && "Je suis père"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+if (childCount > 0) {
+  return <p>Il a un ou plusieurs enfants</p>
+}
+return <p>Il n'a pas d'enfant</p>
+}`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Router-Dom"
+  },
+  {
+    title: "Utiliser useState",
+    content: {
+      syntaxes: [
+        {
+          code:
+`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
+        },
+        {
+          code:
+`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
+const nomDuState = nomDuContainerContenantLeState[0]
+const setnomDuState = nomDuContainerContenantLeState[1]`
+        },
+        {
+          code:
+`
+if (condition) {
+return (si oui)</p>
+}
+return (si non)
+`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function DadCard() {
+  const childCount = 2
+
+  return (<p>{childCount > 0 ?
+    "Il a un ou plusieurs enfants"
+    : "Il n'a pas d'enfant"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+return (<p>{childCount > 0 && "Je suis père"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+if (childCount > 0) {
+  return <p>Il a un ou plusieurs enfants</p>
+}
+return <p>Il n'a pas d'enfant</p>
+}`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Redux"
+  },
+  {
+    title: "Utiliser useState",
+    content: {
+      syntaxes: [
+        {
+          code:
+`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
+        },
+        {
+          code:
+`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
+const nomDuState = nomDuContainerContenantLeState[0]
+const setnomDuState = nomDuContainerContenantLeState[1]`
+        },
+        {
+          code:
+`
+if (condition) {
+return (si oui)</p>
+}
+return (si non)
+`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function DadCard() {
+  const childCount = 2
+
+  return (<p>{childCount > 0 ?
+    "Il a un ou plusieurs enfants"
+    : "Il n'a pas d'enfant"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+return (<p>{childCount > 0 && "Je suis père"}</p>)
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+if (childCount > 0) {
+  return <p>Il a un ou plusieurs enfants</p>
+}
+return <p>Il n'a pas d'enfant</p>
+}`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Redux"
   }
 ]
