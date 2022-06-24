@@ -12,7 +12,7 @@ function CodeBlock({ title, syntaxes, exemples }) {
       {syntaxes.map((syntax, index) =>
         <div className='code-illustration' key={`syntax-${index}`}>
           <pre className='code'>{syntax.code}</pre>
-          {syntax.comments && <p className='comments'>{syntax.comments}</p>}
+          {syntax.comments && <pre className='comments'>{syntax.comments}</pre>}
         </div>
       )}
       
@@ -23,7 +23,7 @@ function CodeBlock({ title, syntaxes, exemples }) {
           {exemples.map((exemple, index) =>
             <div className='code-illustration' key={`exemple-${index}`}>
               <pre className='code'>{exemple.code}</pre>
-              {exemple.comments && <p className='comments'>{exemple.comments}</p>}
+              {exemple.comments && <pre className='comments'>{exemple.comments}</pre>}
             </div>
           )}
         </div>

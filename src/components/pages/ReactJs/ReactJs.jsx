@@ -5,6 +5,8 @@ import { reactContent } from "../../../data/reactContent"
 function ReactJs() {
   const installationContent = reactContent.filter(content => content.category === "Installation")
   const utilisationContent = reactContent.filter(content => content.category === "Utilisation")
+  const hooksContent = reactContent.filter(content => content.category === "Hooks")
+  const externalComponentsContent = reactContent.filter(content => content.category === "Composants externes")
 
   return (
     <main className='page-main'>
@@ -26,6 +28,18 @@ function ReactJs() {
       </div>
 
       <h2>Hooks</h2>
+      <div className='block-container'>
+        {hooksContent.map((content, index) =>
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+        )}
+      </div>
+
+      <h2>Composants externes</h2>
+      <div className='block-container'>
+        {externalComponentsContent.map((content, index) =>
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+        )}
+      </div>
     </main>
   );
 }
