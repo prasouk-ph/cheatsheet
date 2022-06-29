@@ -19,7 +19,9 @@ if (condition) {
 return (si oui)</p>
 }
 return (si non)
-`
+`,
+          comments:
+`Hors jsx`
         }
       ],
       exemples: [
@@ -54,5 +56,6 @@ return <p>Il n'a pas d'enfant</p>
         }
       ],
     },
-    category: "Utilisation"
-  }
+    category: "Composants externes",
+    name: "React-Redux"
+  },

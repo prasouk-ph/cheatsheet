@@ -6,10 +6,10 @@ function ReactJs() {
   const installationContent = reactContent.filter(content => content.category === "Installation")
   const utilisationContent = reactContent.filter(content => content.category === "Utilisation")
   const hooksContent = reactContent.filter(content => content.category === "Hooks")
+  const propsContent = reactContent.filter(content => content.category === "Props")
   // const externalComponentsContent = reactContent.filter(content => content.category === "Composants externes")
   const reactReduxContent = reactContent.filter(content => content.name === "React-Redux")
   const reactRouterDomContent = reactContent.filter(content => content.name === "React-Router-Dom")
-  const propTypesContent = reactContent.filter(content => content.name === "PropTypes")
 
   return (
     <main className='page-main'>
@@ -30,6 +30,13 @@ function ReactJs() {
         )}
       </div>
 
+      <h2>Props</h2>
+      <div className='block-container'>
+        {propsContent.map((content, index) =>
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+        )}
+      </div>
+
       <h2>Hooks</h2>
       <div className='block-container'>
         {hooksContent.map((content, index) =>
@@ -38,7 +45,6 @@ function ReactJs() {
       </div>
 
       <h2>Composants externes</h2>
-      
       <div className='components-container'>
         <h3>React-Router-Dom</h3>
           <div className='block-container'>
@@ -50,13 +56,6 @@ function ReactJs() {
         <h3>React-Redux</h3>
         <div className='block-container'>
           {reactReduxContent.map((content, index) =>
-            <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
-          )}
-        </div>
-
-        <h3>Prop-Types</h3>
-        <div className='block-container'>
-          {propTypesContent.map((content, index) =>
             <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
           )}
         </div>

@@ -370,7 +370,7 @@ Les props par défauts sont optionnelles`
         },
         {
           code:
-`function Card(props) {
+`function Composant(props) {
   const props1 = props.name
   const props2 = props.id
 
@@ -386,7 +386,7 @@ Les props par défauts sont optionnelles`
         },
         {
           code:
-`function Card(props) {
+`function Composant(props) {
   const props1 = props.props1
   const props2 = props.props2
 
@@ -397,7 +397,19 @@ Les props par défauts sont optionnelles`
     </div>
   )
 }`
-        }
+        },
+        {
+          code:
+`function Composant({children}) {
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}`,
+          comments: 
+`Si on ne connaît pas les futurs enfants`
+        },
       ],
       exemples: [
         {
@@ -441,6 +453,55 @@ Card.defaultProps = {
       <p>Id : {id}</p>
     </div>
   )
+}`
+        },
+        {
+          code:
+`function App() {
+  return (
+    <div>
+      <Banner>
+        <img src={logo} alt='La maison jungle' className='lmj-logo' />
+        <h1 className='lmj-title'>La maison jungle</h1>
+      </Banner>
+      <div className='lmj-layout-inner'>
+        <Cart />
+        <ShoppingList />
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+function Banner({children}) {
+  return <div className='lmj-banner'>{children}</div>
+}`,
+          comments:`Les balises img et h1 seront englobées par une div ayant pour class lmj-banner`
+        }
+      ],
+    },
+    category: "Props"
+  },
+  {
+    title: "Passer une props",
+    content: {
+      syntaxes: [
+        {
+          code:
+`<Composant props1="valeurProps1" props2={valeurProps2ViaVariable}/>`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function Banner(data) {
+  const photographerId = data.id
+
+  return (
+    <div>
+      <Header />
+      <Card photographerName="Paul" photographerId={photographerId} />
+    </div>)
 }`
         }
       ],
@@ -701,13 +762,13 @@ export const NomDuContext1 = createContext(valeurParDéfaut);
 export const NomDuContext2 = createContext(valeurParDéfaut);
 
 function Composant() {
-  const propsATransmette1PourContext1 = valeurDeLaProps
-  const propsATransmette2PourContext1 = valeurDeLaProps
+  const propsATransmettre1PourContext1 = valeurDeLaProps
+  const propsATransmettre2PourContext1 = valeurDeLaProps
   const propsATransmettePourContext2 = valeurDeLaProps
 
   return (
-    <NomDuContext1.Provider value={clef1: propsATransmette1PourContext1, clef2: propsATransmette2PourContext1}>
-      <NomDuContext2.Provider value={propsATransmettePourContext2}>
+    <NomDuContext1.Provider value={clef1: propsATransmette1PourContext1, clef2: propsATransmettre2PourContext1}>
+      <NomDuContext2.Provider value={propsATransmettrePourContext2}>
         <AutreComposant />
       </NomDuContext2.Provider>
     </NomDuContext1.Provider>
@@ -907,58 +968,390 @@ function Home() {
     name: "React-Router-Dom"
   },
   {
-    title: "Utiliser useState",
+    title: "Pour utiliser",
     content: {
       syntaxes: [
         {
           code:
-`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
+`import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<ComposantAAfficher/>} />
+        <Route path="/cheminvoulu" element={<ComposantAAfficher/>} />
+        <Route path="*" element={<ComposantAAfficher/>} />
+      </Routes>
+    </Router>`,
+          comments:
+`Sans Layout
+"*" capturera tous les chemins non spécifiés`
         },
         {
           code:
-`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
-const nomDuState = nomDuContainerContenantLeState[0]
-const setnomDuState = nomDuContainerContenantLeState[1]`
+`import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<ComposantIndiquantLaStructureDuLayout />}>
+          <Route index element={<ComposantAAfficher />} />
+          <Route path="/about" element={<ComposantAAfficher />} />
+          <Route path="/accomodation/:id" element={<ComposantAAfficher />} />
+          <Route path="*" element={<ComposantAAfficher />}/>
+        </Route>
+      </Routes>
+    </Router>`,
+          comments: 
+`Avec Layout
+index element correspond à la route par défaut`
         },
         {
           code:
-`
-if (condition) {
-return (si oui)</p>
-}
-return (si non)
-`
+`import { Outlet } from "react-router-dom";
+
+function ComposantIndiquantLaStructureDuLayout() {
+  return (
+    <div>
+      <ComposantSupplémentaireAAfficher />
+      <Outlet />
+      <ComposantSupplémentaireAAfficher />
+    </div>
+  );
+}`,
+          comments: 
+`Composant Layout
+Outlet affichera l'element de la Route selon le path`
         }
       ],
       exemples: [
         {
           code:
-`function DadCard() {
-  const childCount = 2
+`import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Survey from './pages/Survey'
+import NoPage from './pages/NoPage'
+ 
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/survey" element={<Survey/>} />
+        <Route path="*" element={<NoPage/>} />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+)`,
+          comments: "Dans index.js"
+        },
+        {
+          code:
+`import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Layout from './utils/Layout'
+import Home from './pages/Home'
+import Survey from './pages/Survey'
+import Results from './pages/Results'
+import Freelances from './pages/Freelances'
+import Header from './components/Header'
+import Error from './components/Error'
 
-  return (<p>{childCount > 0 ?
-    "Il a un ou plusieurs enfants"
-    : "Il n'a pas d'enfant"}</p>)
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home />} />
+          <Route path="survey/:questionNumber" element={<Survey />} />
+          <Route path="results" element={<Results />} />
+          <Route path="freelances" element={<Freelances />} />
+          <Route path="*" element={<Error />} />
+        </Route>
+      </Routes>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+)`,
+          comments: "Dans index.js"
+        },
+        {
+          code:
+`import { Outlet } from "react-router-dom";
+
+function Layout() {
+  return (
+    <div className='Layout'>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+}`,
+          comments: "Ailleurs que index.js"
+        },
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Router-Dom"
+  },
+  {
+    title: "Pour accéder aux paramètres URL",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import { useParams } from 'react-router-dom';
+
+function Composant() {
+  const { nomParamètreDéfiniDansLePathDeLaRoute } = useParams();
+}`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function Accomodation() {
+  const { id } = useParams()
+  const currentAccomodation = accomodations.filter(accomodation => accomodation.id === id)[0]
+  
+  if (currentAccomodation === undefined) {
+    console.log("ID inexistant !");
+    navigate("/404");
+  }
+
+  return (<p>{"L'id du logement est " + id}</p>)
+}`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Router-Dom"
+  },
+  {
+    title: "Pour rediriger vers une route",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import { useNavigate } from "react-router-dom";
+
+function Composant() {
+  let navigate = useNavigate();
+  
+  navigate("cheminVoulu");
+
+  return
+}`,
+          comments: "Hors jsx, à utiliser dans une fonction"
+        },
+        {
+          code:
+`import { Link } from 'react-router-dom'
+
+function Composant() {
+  return (
+    <nav>
+      <Link to="path">Contenu</Link>
+    </nav>
+  )
+}`,
+          comments: "Seulement dans du jsx"
+        }
+      ],
+      exemples: [
+        {
+          code:
+`import './Card.css';
+import accomodations from '../../../../data/logements.json'
+import { useNavigate } from "react-router-dom";
+
+function Card({ title, id }) {
+  let navigate = useNavigate();
+  const cardData = accomodations.filter(accomodation => accomodation.id === id)[0]
+  const cardCoverSource = cardData.cover
+  const path = "/accomodation/" + id
+
+  function handleClick() {
+      navigate(path);
+  }
+
+  return (
+  <div className='card' onClick={handleClick}>
+    <img className='card-cover' src={cardCoverSource} alt="card cover" />
+
+    <div className="card-footer">
+      <p className='card-title'>{title}</p>
+    </div>
+  </div>
+  );
 }`
         },
         {
           code:
-`function ManCard() {
-const childCount = 2
+`import { Link } from 'react-router-dom'
 
-return (<p>{childCount > 0 && "Je suis père"}</p>)
-}`
-        },
+function Menu() {
+  return (
+    <nav>
+      <Link to="/">Accueil</Link>
+      <Link to="/survey/:id”>Questionnaire</Link>
+      <Link to="/freelances">Profils</Link>
+      <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
+    </nav>
+  )
+}`,
+          comments: 
+`Pour rediriger vers autre chose qu'une route
+On pourra toujours utiliser la balise a`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Router-Dom"
+  },
+  {
+    title: "Pour installer",
+    content: {
+      syntaxes: [
         {
           code:
-`function ManCard() {
-const childCount = 2
+`npm install @reduxjs/toolkit react-redux`
+        }
+      ]
+    },
+    category: "Composants externes",
+    name: "React-Redux"
+  },
+  {
+    title: "Initialiser le store",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import { configureStore } from '@reduxjs/toolkit'
+import { createAction } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
 
-if (childCount > 0) {
-  return <p>Il a un ou plusieurs enfants</p>
+const reducer1InitialStateEnObjet = {
+  nomclef: {    
+    propriété1: "valeur",
+    propriété2: "valeur",
+  }
 }
-return <p>Il n'a pas d'enfant</p>
-}`
+
+const reducer2InitialState = valeur
+
+export const nomDuneActionAvecPayload = createAction(
+  'nomDeLactionAvecPayload',
+  (nomPayload) => ({
+    payload: { clefPayload: valeurPayload }, // should be an object
+  })
+);
+
+export const nomDuneActionSansPayload = createAction('nomDeLactionSansPayload');
+
+const reducer1 = createReducer(reducer1InitialStateEnObjet.nomclef, (builder) =>
+  builder
+    .addCase(nomDuneActionAvecPayload, (draft, action) => {
+      draft.propriété1 = action.payload.clefPayload
+      return
+    })
+    .addCase(nomDuneActionSansPayload, (draft) => {
+      draft.propriété2 = true
+      return
+    })
+)
+
+const reducer2 = createReducer(reducer2InitialState, (builder) =>
+  builder
+    .addCase(nomDuneActionAvecPayload, (state, action) => {
+      return action.payload
+    })
+    .addCase(nomDuneActionSansPayload, (state) => {
+      return nouveauState
+    })
+)
+
+export const store = configureStore({
+  reducer : {
+      clefReducer1: reducer1,
+      clefReducer2: reducer2
+  },
+});`,
+          comments:"A placer au bout d'un fichier store.js"
+        }
+      ],
+      exemples: [
+        {
+          code:
+`import { configureStore } from '@reduxjs/toolkit'
+import { createAction } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
+
+const userInitialState = {
+  user: {    
+    userFirstName: "",
+    userLastName: "",
+  }
+}
+
+const loginInitialState = {
+  login: {
+    isLogged: checkLoginStatus()
+  }
+}
+
+export const setUserFirstName = createAction(
+  'setUserFirstName',
+  (firstName) => ({
+    payload: { userFirstName: firstName }, // should be an object
+  })
+);
+
+export const setUserLastName = createAction(
+  'setUserLastName',
+  (lastName) => ({
+      payload: { userLastName: lastName },
+  })
+);
+
+export const logOut = createAction('logOut');
+
+export const logIn = createAction('logIn');
+
+const userReducer = createReducer(userInitialState.user, (builder) =>
+  builder
+    .addCase(setUserFirstName, (draft, action) => {
+      draft.userFirstName = action.payload.userFirstName
+      return
+    })
+    .addCase(setUserLastName, (draft, action) => {
+      draft.userLastName = action.payload.userLastName
+      return
+    })
+)
+
+const loginReducer = createReducer(loginInitialState.login, (builder) =>
+  builder
+    .addCase(logIn, (draft) => {
+      draft.isLogged = true
+      return
+    })
+    .addCase(logOut, (draft) => {
+      draft.isLogged = false
+      return
+    })
+)
+
+export const store = configureStore({
+  reducer : {
+      user: userReducer,
+      login: loginReducer,
+  },
+});`
         }
       ],
     },
@@ -966,64 +1359,62 @@ return <p>Il n'a pas d'enfant</p>
     name: "React-Redux"
   },
   {
-    title: "Utiliser useState",
+    title: "Lancer des actions",
     content: {
       syntaxes: [
         {
           code:
-`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
-        },
-        {
-          code:
-`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
-const nomDuState = nomDuContainerContenantLeState[0]
-const setnomDuState = nomDuContainerContenantLeState[1]`
-        },
-        {
-          code:
-`
-if (condition) {
-return (si oui)</p>
-}
-return (si non)
-`,
-          comments:
-`Hors jsx`
+`import { useDispatch } from 'react-redux';
+import { action1, action2 } from 'fichier contenant les actions';
+
+const dispatch = useDispatch()
+
+dispatch(action1())
+
+// avec payload
+dispatch(action2('valeurDuPayload'))`
         }
       ],
       exemples: [
         {
           code:
-`function DadCard() {
-  const childCount = 2
+`import { useDispatch } from 'react-redux';
+import { playPause, pointScored } from '../../../store/store';
 
-  return (<p>{childCount > 0 ?
-    "Il a un ou plusieurs enfants"
-    : "Il n'a pas d'enfant"}</p>)
-}`
-        },
-        {
-          code:
-`function ManCard() {
-const childCount = 2
+const dispatch = useDispatch()
 
-return (<p>{childCount > 0 && "Je suis père"}</p>)
-}`
-        },
-        {
-          code:
-`function ManCard() {
-const childCount = 2
+dispatch(playPause())
 
-if (childCount > 0) {
-  return <p>Il a un ou plusieurs enfants</p>
-}
-return <p>Il n'a pas d'enfant</p>
-}`
+// avec payload
+dispatch(pointScored(‘player1’))`
         }
       ],
     },
     category: "Composants externes",
     name: "React-Redux"
-  }
+  },
+  {
+    title: "Accéder au store",
+    content: {
+      syntaxes: [
+        {
+          code:
+`import { useSelector } from 'react-redux'
+
+const dataVoulue = useSelector ((state) => state.clé.value)`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`import { useSelector } from "react-redux";
+
+const isLogged = useSelector((state) => state.login.isLogged);
+`
+        }
+      ],
+    },
+    category: "Composants externes",
+    name: "React-Redux"
+  },
 ]
