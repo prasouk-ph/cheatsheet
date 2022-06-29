@@ -824,7 +824,7 @@ function Composant() {
   );
 }`,
           comments:
-`La dépendance est optionnel, la fonction dans le useEffect se relance à chaque fois que la dépendance change
+`La dépendance est optionnelle, la fonction dans le useEffect se relance à chaque fois que la dépendance change
 Sans dépendance, elle se lancera à chaque nouveau rendu`
         },
         {
@@ -894,60 +894,14 @@ function Home() {
     category: "Hooks"
   },
   {
-    title: "Utiliser useState",
+    title: "Pour installer",
     content: {
       syntaxes: [
         {
           code:
-`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
-        },
-        {
-          code:
-`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
-const nomDuState = nomDuContainerContenantLeState[0]
-const setnomDuState = nomDuContainerContenantLeState[1]`
-        },
-        {
-          code:
-`
-if (condition) {
-return (si oui)</p>
-}
-return (si non)
-`
+`npm install react-router-dom`
         }
-      ],
-      exemples: [
-        {
-          code:
-`function DadCard() {
-  const childCount = 2
-
-  return (<p>{childCount > 0 ?
-    "Il a un ou plusieurs enfants"
-    : "Il n'a pas d'enfant"}</p>)
-}`
-        },
-        {
-          code:
-`function ManCard() {
-const childCount = 2
-
-return (<p>{childCount > 0 && "Je suis père"}</p>)
-}`
-        },
-        {
-          code:
-`function ManCard() {
-const childCount = 2
-
-if (childCount > 0) {
-  return <p>Il a un ou plusieurs enfants</p>
-}
-return <p>Il n'a pas d'enfant</p>
-}`
-        }
-      ],
+      ]
     },
     category: "Composants externes",
     name: "React-Router-Dom"
@@ -1032,7 +986,9 @@ if (condition) {
 return (si oui)</p>
 }
 return (si non)
-`
+`,
+          comments:
+`Hors jsx`
         }
       ],
       exemples: [

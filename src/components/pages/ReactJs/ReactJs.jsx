@@ -1,6 +1,6 @@
-import './ReactJs.css';
 import CodeBlock from '../../utils/CodeBlock/CodeBlock';
 import { reactContent } from "../../../data/reactContent"
+import './ReactJs.css';
 
 function ReactJs() {
   const installationContent = reactContent.filter(content => content.category === "Installation")
@@ -9,6 +9,7 @@ function ReactJs() {
   // const externalComponentsContent = reactContent.filter(content => content.category === "Composants externes")
   const reactReduxContent = reactContent.filter(content => content.name === "React-Redux")
   const reactRouterDomContent = reactContent.filter(content => content.name === "React-Router-Dom")
+  const propTypesContent = reactContent.filter(content => content.name === "PropTypes")
 
   return (
     <main className='page-main'>
@@ -52,7 +53,22 @@ function ReactJs() {
             <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
           )}
         </div>
+
+        <h3>Prop-Types</h3>
+        <div className='block-container'>
+          {propTypesContent.map((content, index) =>
+            <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+          )}
+        </div>
       </div>
+
+      <h2>Autres liens</h2>
+      <ul>
+        <li><a target="blank" href="https://dev.to/ericlecodeur/aide-memoire-react-cheat-sheet-32g5">ericlecodeur</a></li>
+        <li><a target="blank" href="https://devhints.io/react">devhints</a></li>
+        <li><a target="blank" href="https://www.codecademy.com/learn/react-101/modules/react-101-jsx-u/cheatsheet">codecademy</a></li>
+      </ul>
+      
     </main>
   );
 }
