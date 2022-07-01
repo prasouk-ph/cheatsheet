@@ -277,7 +277,7 @@ return (si non)
   return (
     <ul>
       {plantList.forEach((plant, index) => (
-        <li key={plant + "-" +index}>{plant}</li>
+        <li key={$\{plant}-$\{index}}>{plant}</li>
       ))}
     </ul>
   )
@@ -1280,8 +1280,7 @@ export const store = configureStore({
       clefReducer1: reducer1,
       clefReducer2: reducer2
   },
-});`,
-          comments:"A placer au bout d'un fichier store.js"
+});`
         }
       ],
       exemples: [
@@ -1386,7 +1385,7 @@ const dispatch = useDispatch()
 dispatch(playPause())
 
 // avec payload
-dispatch(pointScored(‘player1’))`
+dispatch(pointScored('player1'))`
         }
       ],
     },
@@ -1401,7 +1400,7 @@ dispatch(pointScored(‘player1’))`
           code:
 `import { useSelector } from 'react-redux'
 
-const dataVoulue = useSelector ((state) => state.clé.value)`
+const dataVoulue = useSelector ((state) => state.clefDuReducer.clefVoulue)`
         }
       ],
       exemples: [

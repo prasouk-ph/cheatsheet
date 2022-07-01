@@ -11,17 +11,6 @@
 `const nomDuContainerContenantLeState = useState(valeurParDéfaut)
 const nomDuState = nomDuContainerContenantLeState[0]
 const setnomDuState = nomDuContainerContenantLeState[1]`
-        },
-        {
-          code:
-`
-if (condition) {
-return (si oui)</p>
-}
-return (si non)
-`,
-          comments:
-`Hors jsx`
         }
       ],
       exemples: [
@@ -42,20 +31,8 @@ const childCount = 2
 
 return (<p>{childCount > 0 && "Je suis père"}</p>)
 }`
-        },
-        {
-          code:
-`function ManCard() {
-const childCount = 2
-
-if (childCount > 0) {
-  return <p>Il a un ou plusieurs enfants</p>
-}
-return <p>Il n'a pas d'enfant</p>
-}`
         }
       ],
     },
-    category: "Composants externes",
-    name: "React-Redux"
+    category: "Type"
   },

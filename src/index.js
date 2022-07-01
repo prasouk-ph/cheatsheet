@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Layout from './components/utils/Layout/Layout'
 // import Home from './components/pages/Home/Home';
 import ReactJs from './components/pages/ReactJs/ReactJs'
+import JavaScript from './components/pages/JavaScript/JavaScript';
 import NotFoundPage from './components/pages/NotFoundPage/NotFoundPage';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -14,9 +15,10 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<ReactJs />} />
+          <Route index element={<JavaScript />} />
           <Route path="/react" element={<ReactJs />} />
-          <Route path="*" element={<NotFoundPage />}/>
+          <Route path="/javascript" element={<JavaScript />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Router>

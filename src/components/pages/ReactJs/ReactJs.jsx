@@ -14,7 +14,6 @@ function ReactJs() {
   return (
     <main className='page-main'>
       <h1>Aide-mémoire ReactJS</h1>
-      <p>Sur cette page vous trouverez le cheatsheet de React</p>
 
       <h2>Installation</h2>
       <div className='block-container'>
