@@ -4,6 +4,16 @@ import './JavaScript.css';
 
 function JavaScript() {
   const typeContent = javaScriptContent.filter(content => content.category === "Type")
+  const conditionsContent = javaScriptContent.filter(content => content.category === "Conditions")
+  const loopsContent = javaScriptContent.filter(content => content.category === "Boucles")
+  const operatorsContent = javaScriptContent.filter(content => content.category === "Opérateurs")
+  const variablesContent = javaScriptContent.filter(content => content.category === "Variables")
+  const fonctionsContent = javaScriptContent.filter(content => content.category === "Fonctions")
+  const eventsContent = javaScriptContent.filter(content => content.category === "Evénements")
+  const asyncContent = javaScriptContent.filter(content => content.category === "Asynchrones")
+  const classesContent = javaScriptContent.filter(content => content.category === "Classes")
+  const importExportContent = javaScriptContent.filter(content => content.category === "Import Export")
+  const bestFunctionsContent = javaScriptContent.filter(content => content.category === "Fonctions utiles")
 
   return (
     <main className='page-main'>
@@ -16,84 +26,76 @@ function JavaScript() {
         )}
       </div>
 
+      <h2>Variables</h2>
+      <div className='block-container'>
+        {variablesContent.map((content, index) =>
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+        )}
+      </div>
+
+      <h2>Opérateurs</h2>
+      <div className='block-container'>
+        {operatorsContent.map((content, index) =>
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+        )}
+      </div>
+      
       <h2>Conditions</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {conditionsContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Boucles</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
-        )}
-      </div>
-
-      <h2>Opérations</h2>
-      <div className='block-container'>
-        {typeContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
-        )}
-      </div>
-
-      <h2>Variables</h2>
-      <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {loopsContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Fonctions</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {fonctionsContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Evénements</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {eventsContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Asynchrones</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {asyncContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Classes</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {classesContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Import / Export</h2>
       <div className='block-container'>
-        {typeContent.map((content, index) =>
+        {importExportContent.map((content, index) =>
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
 
       <h2>Fonctions utiles</h2>
       <div className='functions-container'>
-        <h3>React-Router-Dom</h3>
           <div className='block-container'>
-            {typeContent.map((content, index) =>
+            {bestFunctionsContent.map((content, index) =>
               <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
             )}
           </div>
-
-        <h3>React-Redux</h3>
-        <div className='block-container'>
-          {typeContent.map((content, index) =>
-            <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
-          )}
-        </div>
       </div>
 
       <h2>Autres liens</h2>
