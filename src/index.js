@@ -6,6 +6,8 @@ import Layout from './components/utils/Layout/Layout'
 import ReactJs from './components/pages/ReactJs/ReactJs'
 import JavaScript from './components/pages/JavaScript/JavaScript';
 import Git from './components/pages/Git/Git';
+import Css from './components/pages/Css/Css';
+import Html from './components/pages/Html/Html';
 import NotFoundPage from './components/pages/NotFoundPage/NotFoundPage';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -19,6 +21,9 @@ root.render(
           <Route index element={<Git />} />
           <Route path="/react" element={<ReactJs />} />
           <Route path="/javascript" element={<JavaScript />} />
+          <Route path="/git" element={<Git />} />
+          <Route path="/css" element={<Css />} />
+          <Route path="/html" element={<Html />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

@@ -23,6 +23,12 @@ function Git() {
           <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
         )}
       </div>
+
+      <h2>Autres liens</h2>
+      <ul>
+        <li><a target="blank" href="https://www.codecademy.com/learn/learn-git/modules/learn-git-git-workflow-u/cheatsheet">codecademy</a></li>
+      </ul>
+
     </main>
   );
 }
