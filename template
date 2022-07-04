@@ -1,38 +1,47 @@
-  {
-    title: "Utiliser useState",
-    content: {
-      syntaxes: [
-        {
-          code:
-`const [nomDuState, setnomDuState] = useState(valeurParDéfaut)`
-        },
-        {
-          code:
-`const nomDuContainerContenantLeState = useState(valeurParDéfaut)
-const nomDuState = nomDuContainerContenantLeState[0]
-const setnomDuState = nomDuContainerContenantLeState[1]`
-        }
-      ],
-      exemples: [
-        {
-          code:
+{
+  title: "Configuration",
+  content: {
+    syntaxes: [
+      {
+        code:
+`git --version`,
+        comments:
+`Pour vérifier la version de git
+Si pas installé, le proposera`
+      },
+      {
+        code:
+`which git`,
+        comments:
+`Pour vérifier si installé`
+      },
+      {
+        code:
+`git config --list`,
+        comments:
+`Pour voir la configuration`
+      }
+    ],
+    exemples: [
+      {
+        code:
 `function DadCard() {
-  const childCount = 2
+const childCount = 2
 
-  return (<p>{childCount > 0 ?
-    "Il a un ou plusieurs enfants"
-    : "Il n'a pas d'enfant"}</p>)
+return (<p>{childCount > 0 ?
+  "Il a un ou plusieurs enfants"
+  : "Il n'a pas d'enfant"}</p>)
 }`
-        },
-        {
-          code:
+      },
+      {
+        code:
 `function ManCard() {
 const childCount = 2
 
 return (<p>{childCount > 0 && "Je suis père"}</p>)
 }`
-        }
-      ],
-    },
-    category: "Type"
+      }
+    ],
   },
+  category: "Type"
+},

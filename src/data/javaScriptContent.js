@@ -424,8 +424,14 @@ const passVaccinal = true
 
 if (testPCR || passVaccinal) {
   alert("On peut entrer")
+}
+
+if (testPCR === false || passVaccinal === false) {
+  alert("On ne peut pas entrer")
 }`,
-          comments: "Si on ne précise pas la valeur, elle sera automatiquement true"
+          comments:
+`Si on ne précise pas la valeur, elle sera automatiquement true
+Pour chaque expression, il faudra préciser la valeur même si c'est la même que les autres`
         }
       ],
     },
@@ -689,5 +695,507 @@ switch (tyreNumber) {
       ],
     },
     category: "Conditions"
+  },
+  {
+    title: "Pour gérer des événements via propriétés HTML",
+    content: {
+      syntaxes: [
+        {
+          code:
+`<balise onEvénement="fonction(paramètreSiBesoin)">Contenu de la balise</balise>`
+        },
+        {
+          code:
+`<balise onEvénement="instructions">Contenu de la balise</balise>`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`// Dans le fichier JS :
+function notify(event) {
+  const type = event.type
+  alert(\`L'événement est un $\{type}\`)
+}
+
+// Dans le fichier html :
+<button onClick="notify(event)">Clique !</button>
+<button onClick="alert("Tu viens de cliquer !")">Clique !</button>`
+        }
+      ],
+    },
+    category: "Evénements"
+  },
+  {
+    title: "Pour gérer des événements seulement en JS",
+    content: {
+      syntaxes: [
+        {
+          code:
+`élémentHTML.addEventListener(typeD'événementAEcouter, fonctionEnRéactionDeL'événement(paramètreSiBesoin))`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`// Dans le fichier JS :
+function notify(event) {
+  const type = event.type
+  alert(\`L'événement est un $\{type}\`)
+}
+
+const firstButton = document.querySelector(".firstButton")
+button.addEventListener(click, notify)
+
+const secondButton = document.querySelector(".secondButton")
+button.addEventListener(click, notify(event))
+
+const thirdButton = document.querySelector(".thirdButton")
+button.addEventListener(click, function(event) => {
+  const type = event.type
+  alert(\`L'événement est un $\{type}\`)
+})
+
+// Dans le fichier html :
+<button class="firstButton">Clique !</button>
+<button class="secondButton">Clique !</button>
+<button class="thirdButton">Clique !</button>`,
+          comments:
+`addEventListener prend automatiquement l'événement en argument
+On est donc pas obligé de le préciser`
+        }
+      ],
+    },
+    category: "Evénements"
+  },
+  {
+    title: "Pour empêcher le comportement par défaut",
+    content: {
+      syntaxes: [
+        {
+          code:
+`event.preventDefault();`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`function notify(event) {
+  const type = event.type
+  alert(\`L'événement est un $\{type}\`)
+}
+
+const link = document.querySelector(".link")
+link.addEventListener(click, function(event) => {
+  event.preventDefault()
+  alert("On vient d'empêcher la redirection par défaut")
+})`
+        }
+      ],
+    },
+    category: "Evénements"
+  },
+  {
+    title: "Pour empêcher la propagation",
+    content: {
+      syntaxes: [
+        {
+          code:
+`event.stopPropagation();`
+        },
+        {
+          code:
+`event.stopImmediatePropagation();`,
+          comments: "Empêchera la réaction des événements suivants"
+        }
+      ],
+      exemples: [
+        {
+          code:
+`// Dans un fichier html :
+<div class="box">
+  <button class="btn">Register</button>
+</div>
+
+
+// Dans un fichier js :
+const btn = document.querySelector('.btn');
+const box = document.querySelector('.box');
+
+btn.addEventListener('click', function(event) {
+  alert('The button was clicked!');
+  event.stopPropagation()
+  event.stopImmediatePropagation()
+});
+
+btn.addEventListener('click', function(event) {
+  alert('Grâce à stopImmediatePropagation, cette réaction n'aura pas lieu');
+});
+
+box.addEventListener('click', function(event) {
+  alert('The box was clicked!');
+});`,
+          comments: `A cause de stopPropagation, l'alerte "The box was clicked !" n'aura pas lieu`
+        }
+      ],
+    },
+    category: "Evénements"
+  },
+  {
+    title: "Avec for",
+    content: {
+      syntaxes: [
+        {
+          code:
+`tableau.forEach(nomDonneAChaqueElementDuTableau => instructions);`
+        },
+        {
+          code:
+`for (let numéroItérationInitiale = valeurInitiale; conditionsArrêtItération; changementNuméroItérationAprèsChaqueItération) {
+  instructions;
+}`
+        },
+        {
+          code:
+`for (let nomValeurChaqueElément of stringOuTableau) {
+  instructions;
+}`
+        },
+        {
+          code:
+`for (let nomChaqueClé in objet) {
+  instructions;
+}`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`const tuteurs = ["Paul", "Thomas"]
+tuteurs.forEach(tuteur => console.log(\`Bonjour, je suis $\{tuteur}\`));`
+        },
+        {
+          code:
+`const tuteurs = ["Paul", "Thomas"]
+
+for (let i = 0; i < tuteurs.length; i++) {
+  console.log(\`Bonjour, je suis $\{tuteur[i]}\`);
+}`
+        },
+        {
+          code:
+`const phrase = "Je suis une phrase"
+
+for (let lettre of phrase) {
+  console.log(\`Je suis la lettre $\{lettre} et j'appartiens à la phrase $\{phrase}\`);
+}
+
+
+const tuteurs = ["Paul", "Thomas"]
+
+for (let tuteur of tuteurs) {
+  console.log(\`Je suis $\{tuteur}\`);
+}`
+        },
+        {
+          code:
+`const tuteur = {
+  prénom: "Paul",
+  nom: "Pierce"
+}
+
+for (let key in tuteur) {
+  console.log(\`Mon $\{key} est $\{tuteur[key]}\`);
+}`
+        }
+      ],
+    },
+    category: "Boucles"
+  },
+  {
+    title: "Avec while",
+    content: {
+      syntaxes: [
+        {
+          code:
+`while (conditions) {
+	instructions;
+  changementNuméroItérationAprèsChaqueItération
+}`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`const tuteurs = ["Paul", "Thomas"]
+let index = 0
+
+while (index > tuteurs.length - 1) {
+	console.log(\`Je suis $\{tuteur[index]}\`);
+  index++;
+}`
+        }
+      ],
+    },
+    category: "Boucles"
+  },
+  {
+    title: "Avec map",
+    content: {
+      syntaxes: [
+        {
+          code:
+`const tableau = [élément1, élément2, élément3];
+
+tableau.map(nomDonnéAChaqueElément => instructions)`
+        },
+        {
+          code:
+`const tableauD'objet = [
+  {
+    propriété1 = valeur,
+    propriété2 = valeur
+  },
+  {
+    propriété1 = valeur,
+    propriété2 = valeur
+  },
+]
+
+tableau.map(nomDonnéAChaqueElément => nomDonnéAChaqueElément.propriété)`,
+          comments: ""
+        }
+      ],
+      exemples: [
+        {
+          code:
+`const nombres = [1, 4, 9];
+
+const incrementationNombres = nombres.map(élément => élément++)`
+        },
+        {
+          code:
+`const tuteurs = [
+  {
+    name: "Paul",
+    surname: "Pierce"
+  },
+  {
+    name: "Thomas",
+    surname: "Dupont"
+  },
+  {
+    name: "Alain",
+    surname: "Dupont"
+  }
+]
+
+const lesDupont = tuteurs.map(tuteur => tuteur.surname)`
+        }
+      ],
+    },
+    category: "Boucles"
+  },
+  {
+    title: "Promesses",
+    content: {
+      syntaxes: [
+        {
+          code:
+`async function nomFonction() {
+  const réponseDeLaPromesse = await fonctionasynchrone()
+  const donnéeDeLaRéponse = réponseDeLaPromesse.data
+
+  return (donnéeDeLaRéponse)
+}`
+        },
+        {
+          code:
+`fonctionAsynchrone()
+  .then((result) => {instructions})
+  .catch((error) => {instructions})`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`async function getData() {
+  const response = await fetch("https://dfaefaf")
+
+  if (!response.ok) {
+    throw new Error(
+      \`This is an HTTP error: The status is $\{response.status}\`
+    )
+  } else {
+    const { data } = await response.json()
+    return data
+  }
+}`
+        },
+        {
+          code:
+`fetch("https://dfaefaf")
+  .then((response) => response.json())
+  .catch((error) => console.log(error))
+  .then((data) => return data)`
+        }
+      ],
+    },
+    category: "Asynchrones"
+  },
+  {
+    title: "Gestion des erreurs",
+    content: {
+      syntaxes: [
+        {
+          code:
+`try {
+  instructions
+}
+catch(err) {
+  instructions
+}
+finally {
+  instructions
+}`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`async function callApi(link) {
+  try {
+    const response = await fetch(link)
+
+    if (!response.ok) { // .ok = si code status entre 200 et 299
+      throw new Error(
+        \`This is an HTTP error: The status is $\{response.status}\`
+      )
+    } else {
+        const { data } = await response.json()
+        return data
+    }
+  }
+  catch (error) {
+    console.log(error)
+    return "HTTP error"
+  }
+  finally {
+    console.log("Fin de la requête !")
+  }
+}`
+        }
+      ],
+    },
+    category: "Asynchrones"
+  },
+  {
+    title: "Pour déclarer",
+    content: {
+      syntaxes: [
+        {
+          code:
+`class NomDeLaClasse {
+  nomFonctionD'instance() {
+    instructions
+  }
+
+  static nomFonctionStatique() {
+    instructions
+  }
+}`,
+          comments:
+`Instance = disponible que dans la classe
+Statique = disponible partout`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`class Book {
+	constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+  }
+
+  getTitle() {
+    return this.title
+  }
+}`
+        }
+      ],
+    },
+    category: "Classes"
+  },
+  {
+    title: "Pour créer une nouvelle instance de classe",
+    content: {
+      syntaxes: [
+        {
+          code:
+`const nomVariable = new nomDeLaClasse(“param1”, param2, “param3”);`
+        }
+      ],
+      exemples: [
+        {
+          code:
+`const myBook = new Book("L'Histoire de Tao", "Will Alexander", 250);`
+        }
+      ],
+    },
+    category: "Classes"
+  },
+  {
+    title: "Pour faire hériter des fonctions et attributs",
+    content: {
+      syntaxes: [
+        {
+          code:
+`class nomDeLaClasseQuiReçoit extends nomDeLaClasseQuiPartage {
+  constructor(param1, param2, param3) {
+      super(param1)
+      this.param2 = param2
+      this.param3 = param3
+  }
+}`,
+          comments: "super permet d'appeler à une fonction/d'accéder à des attributs de la classe parent"
+        }
+      ],
+      exemples: [
+        {
+          code:
+`class Media {
+  constructor(url) {
+    this.url = url
+  }
+
+  getUrl() {
+    this.url
+  }
+}
+
+class Movie extends Media {
+  constructor(url, title, releasedDate, duration) {
+      super(url)
+      this.title = title
+      this.releasedDate = releasedDate
+      this.duration = duration
+  }
+
+  super.getUrl()
+}`
+        },
+        {
+          code:
+`function ManCard() {
+const childCount = 2
+
+return (<p>{childCount > 0 && "Je suis père"}</p>)
+}`
+        }
+      ],
+    },
+    category: "Classes"
   },
 ]
