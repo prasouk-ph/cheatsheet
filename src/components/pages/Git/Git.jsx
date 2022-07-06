@@ -7,7 +7,7 @@ function Git() {
   const usageContent = gitContent.filter(content => content.category === "Utilisation")
 
   return (
-    <main className='page-main'>
+    <main>
       <h1>Aide-mémoire Git</h1>
 
       <h2>Configuration</h2>

@@ -2,7 +2,7 @@ import './Html.css';
 
 function Html() {
   return (
-    <main className='page-main'>
+    <main>
       <h1>Aide-mémoire Html</h1>
 
       <h2>Autres liens</h2>

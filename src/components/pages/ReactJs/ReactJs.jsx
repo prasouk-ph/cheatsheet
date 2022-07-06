@@ -12,7 +12,7 @@ function ReactJs() {
   const reactRouterDomContent = reactContent.filter(content => content.name === "React-Router-Dom")
 
   return (
-    <main className='page-main'>
+    <main>
       <h1>Aide-mémoire ReactJS</h1>
 
       <h2>Installation</h2>

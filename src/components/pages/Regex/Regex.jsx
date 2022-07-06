@@ -2,7 +2,7 @@ import './Regex.css';
 
 function Regex() {
   return (
-    <main className='page-main'>
+    <main>
       <h1>Aide-mémoire Regex</h1>
 
       <h2>Autres liens</h2>

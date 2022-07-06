@@ -767,7 +767,10 @@ function Composant() {
   const propsATransmettePourContext2 = valeurDeLaProps
 
   return (
-    <NomDuContext1.Provider value={clef1: propsATransmette1PourContext1, clef2: propsATransmettre2PourContext1}>
+    <NomDuContext1.Provider value={
+      clef1: propsATransmette1PourContext1,
+      clef2: propsATransmettre2PourContext1}
+    >
       <NomDuContext2.Provider value={propsATransmettrePourContext2}>
         <AutreComposant />
       </NomDuContext2.Provider>
@@ -838,8 +841,15 @@ function Home() {
   const [userLastName, setUserLastName] = useState("");
 
   return (
-    <LoginStateContext.Provider value={isLoaded: isLoaded, setIsLoaded: setIsLoaded}>
-      <UserContext.Provider value={userFirstName: userFirstName, setUserFirstName: setUserFirstName, userLastName, setUserLastName}>
+    <LoginStateContext.Provider value={
+      isLoaded: isLoaded,
+      setIsLoaded: setIsLoaded}
+    >
+      <UserContext.Provider value={
+        userFirstName: userFirstName,
+        setUserFirstName: setUserFirstName,
+        userLastName, setUserLastName}
+      >
         <HomePage />
         <LoginPage />
       </UserContext.Provider>
