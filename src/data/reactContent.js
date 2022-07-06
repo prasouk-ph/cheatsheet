@@ -791,7 +791,10 @@ function AutreComposant() {
 }`,
           comments:
 `On sépare les context par catégorie
-Si plusieurs valeurs à partager dans le même context, il faudra les mettre dans un objet pour y accéder par la suite
+
+Si plusieurs valeurs à partager dans le même context,
+il faudra les mettre dans un objet pour y accéder par la suite
+
 Si on veut partager plusieurs context, il faudra les imbriquer à la suite`
         }
       ],
@@ -895,7 +898,8 @@ function Composant() {
   );
 }`,
           comments:
-`La dépendance est optionnelle, la fonction dans le useEffect se relance à chaque fois que la dépendance change
+`La dépendance est optionnelle,
+la fonction dans le useEffect se relance à chaque fois que la dépendance change
 Sans dépendance, elle se lancera à chaque nouveau rendu`
         },
         {

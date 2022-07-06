@@ -3,7 +3,7 @@ import './Html.css';
 function Html() {
   return (
     <main>
-      <h1>Aide-mémoire Html</h1>
+      <h1>Aide-mémoire HTML</h1>
 
       <h2>Autres liens</h2>
       <ul>

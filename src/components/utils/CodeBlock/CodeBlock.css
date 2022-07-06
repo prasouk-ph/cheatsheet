@@ -6,13 +6,6 @@
   border-radius: 5px;
 }
 
-.code {
-  background-color: black;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .comments {
   font-style: italic;
 }
@@ -20,4 +13,17 @@
 .code-illustration {
   border-bottom: 1px solid black;
   margin: 10px 0;
+}
+
+/* code block */
+.csNcpH {
+  padding-right: 40px !important;
+}
+
+.hafAWl {
+  display: none !important;
+}
+
+.csNcpH:hover > .hafAWl {
+  display: inline !important;
 }

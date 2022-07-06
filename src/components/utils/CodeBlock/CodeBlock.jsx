@@ -1,5 +1,6 @@
-import './CodeBlock.css';
 import { useState } from 'react';
+import { CopyBlock, dracula } from "react-code-blocks";
+import './CodeBlock.css';
 
 function CodeBlock({ title, syntaxes, exemples }) {
   const [isActive, setIsActive] = useState(false)
@@ -11,7 +12,13 @@ function CodeBlock({ title, syntaxes, exemples }) {
       <h4>{syntaxes.length > 1 ? "Syntaxes" : "Syntaxe"}</h4>
       {syntaxes.map((syntax, index) =>
         <div className='code-illustration' key={`syntax-${index}`}>
-          <pre className='code'>{syntax.code}</pre>
+          <CopyBlock
+            text={syntax.code}
+            language={"jsx"}
+            showLineNumbers={false}
+            theme={dracula}
+            codeBlock
+          />
           {syntax.comments && <pre className='comments'>{syntax.comments}</pre>}
         </div>
       )}
@@ -25,7 +32,13 @@ function CodeBlock({ title, syntaxes, exemples }) {
               <h4>{exemples.length > 1 ? "Exemples" : "Exemple"}</h4>
               {exemples.map((exemple, index) =>
                 <div className='code-illustration' key={`exemple-${index}`}>
-                  <pre className='code'>{exemple.code}</pre>
+                  <CopyBlock
+                    text={exemple.code}
+                    language={"jsx"}
+                    showLineNumbers={false}
+                    theme={dracula}
+                    codeBlock
+                  />
                   {exemple.comments && <pre className='comments'>{exemple.comments}</pre>}
                 </div>
               )}

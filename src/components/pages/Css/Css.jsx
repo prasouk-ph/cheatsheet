@@ -3,7 +3,7 @@ import './Css.css';
 function Css() {
   return (
     <main>
-      <h1>Aide-mémoire Css</h1>
+      <h1>Aide-mémoire CSS</h1>
 
       <h2>Autres liens</h2>
       <ul>
