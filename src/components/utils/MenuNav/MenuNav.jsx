@@ -12,7 +12,7 @@ function MenuNav() {
   return (
       <Menu
         styles={overlayColor}
-        width={"15vw"}
+        width={"200px"}
       >
         <Link to="/">Accueil</Link>
         <Link to="react">ReactJS</Link>
