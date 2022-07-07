@@ -1,4 +1,4 @@
-.block {
+.code-wrapper {
   width: fit-content;
   height: fit-content;
   padding: 20px;
@@ -11,6 +11,7 @@
 
 .code-illustration {
   border-bottom: 1px solid black;
+  padding-bottom: 10px;
   margin: 10px 0;
 }
 
@@ -25,4 +26,19 @@
 
 .csNcpH:hover > .hafAWl {
   display: inline !important;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-button {
+  background-color: #272A36;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
 }

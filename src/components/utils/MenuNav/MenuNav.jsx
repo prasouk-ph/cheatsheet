@@ -14,13 +14,14 @@ function MenuNav() {
         styles={overlayColor}
         width={"15vw"}
       >
-          <Link to="react">ReactJS</Link>
-          <Link to="javascript">Javascript</Link>
-          <Link to="git">Git</Link>
-          <Link to="css">CSS</Link>
-          <Link to="html">HTML</Link>
-          <Link to="regex">Regex</Link>
-          <Link to="npm">Npm</Link>
+        <Link to="/">Accueil</Link>
+        <Link to="react">ReactJS</Link>
+        <Link to="javascript">Javascript</Link>
+        <Link to="git">Git</Link>
+        <Link to="css">CSS</Link>
+        <Link to="html">HTML</Link>
+        <Link to="regex">Regex</Link>
+        <Link to="npm">Npm</Link>
       </Menu>
   );
 }

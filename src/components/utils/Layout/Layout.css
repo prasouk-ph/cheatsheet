@@ -1,7 +1,9 @@
-
-.layout-main {
-  padding: 30px 80px 100px 80px;
+body {
   background-color: #F7F7F7;
+}
+
+.layout {
+  padding: 30px 80px 100px 80px;
 }
 
 h1 {

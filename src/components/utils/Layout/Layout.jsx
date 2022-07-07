@@ -4,10 +4,10 @@ import MenuNav from '../MenuNav/MenuNav';
 
 function Layout() {
   return (
-    <div className='layout'>
+    <div>
       <MenuNav  />
 
-      <div className="layout-main">
+      <div className="layout">
         <Outlet />
       </div>
     </div>

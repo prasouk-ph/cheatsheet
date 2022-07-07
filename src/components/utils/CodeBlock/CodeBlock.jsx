@@ -6,7 +6,7 @@ function CodeBlock({ title, syntaxes, exemples, color }) {
   const [isActive, setIsActive] = useState(false)
 
   return (
-    <div className='block' style={{background: color}}>
+    <div className='code-wrapper' style={{background: color}}>
       <h3>{title}</h3>
 
       <h4>{syntaxes.length > 1 ? "Syntaxes" : "Syntaxe"}</h4>
@@ -25,8 +25,8 @@ function CodeBlock({ title, syntaxes, exemples, color }) {
       
 
       {exemples && 
-        <div className="exemple-container">
-          <button onClick={() => setIsActive(!isActive)}>{isActive ? "Masquer" : "Afficher"} {exemples.length > 1 ? "les exemples" : " l'exemple"}</button>
+        <div className="example-container">
+          <button className='example-button' onClick={() => setIsActive(!isActive)}>{isActive ? "Masquer" : "Afficher"} {exemples.length > 1 ? "les exemples" : " l'exemple"}</button>
           {isActive &&
             <div>
               <h4>{exemples.length > 1 ? "Exemples" : "Exemple"}</h4>

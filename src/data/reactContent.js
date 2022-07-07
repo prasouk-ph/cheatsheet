@@ -170,25 +170,19 @@ export default Mycomponent`,
       syntaxes: [
         {
           code:
-`
-{condition ? (si oui) : (si non)}
-`
+`{condition ? (si oui) : (si non)}`
         },
         {
           code:
-`
-{condition && (si oui)}
-`
+`{condition && (si oui)}`
         },
         {
           code:
-`
-if (condition) {
+`if (condition) {
   return <balise>(si oui)</balise>
 }
 
-return (si non)
-`
+return (si non)`
         }
       ],
       exemples: [
@@ -233,8 +227,7 @@ return (si non)
       syntaxes: [
         {
           code:
-`
-{tableauAItérer.map((élémentDuTableau, index) => (
+`{tableauAItérer.map((élémentDuTableau, index) => (
   <li key={élémentDuTableau + "-" + index}}>{élémentDuTableau}</li>
 ))}
 `,
@@ -305,8 +298,7 @@ return (si non)
   return (si oui)</p>
 }
 
-  return (si non)
-`
+  return (si non)`
         }
       ],
       exemples: [

@@ -6,7 +6,21 @@
 
 .menu-navigation {
   display: flex;
-  flex-direction: column;
-  width: fit-content;
   align-items: center;
+  font-size: large;
+  font-weight: bold;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.logo {
+  width: 10vw;
+}
+
+.page-description {
+  font-size: large;
+  font-weight: bold;
 }
