@@ -10,36 +10,37 @@ function ReactJs() {
   // const externalComponentsContent = reactContent.filter(content => content.category === "Composants externes")
   const reactReduxContent = reactContent.filter(content => content.name === "React-Redux")
   const reactRouterDomContent = reactContent.filter(content => content.name === "React-Router-Dom")
+  const colorPrimary = '#61D9FA'
 
   return (
     <main>
-      <h1>Aide-mémoire ReactJS</h1>
+      <h1>Aide-mémoire <span style={{color: colorPrimary}}>ReactJS</span></h1>
 
       <h2>Installation</h2>
       <div className='block-container'>
         {installationContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
         )}
       </div>
 
       <h2>Utilisation</h2>
       <div className='block-container'>
         {utilisationContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
         )}
       </div>
 
       <h2>Props</h2>
       <div className='block-container'>
         {propsContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
         )}
       </div>
 
       <h2>Hooks</h2>
       <div className='block-container'>
         {hooksContent.map((content, index) =>
-          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+          <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
         )}
       </div>
 
@@ -48,14 +49,14 @@ function ReactJs() {
         <h3>React-Router-Dom</h3>
           <div className='block-container'>
             {reactRouterDomContent.map((content, index) =>
-              <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+              <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
             )}
           </div>
 
         <h3>React-Redux</h3>
         <div className='block-container'>
           {reactReduxContent.map((content, index) =>
-            <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} />
+            <CodeBlock key={`content-${index}`} title={content.title} syntaxes={content.content.syntaxes} syntaxesComments={content.content.syntaxesComments} exemples={content.content.exemples} exemplesComments={content.content.exemplesComments} color={colorPrimary} />
           )}
         </div>
       </div>

@@ -5,3 +5,16 @@
   gap: 50px;
   margin: 30px;
 }
+
+h2 {
+  position: relative;
+}
+
+h2::after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  border: 1px solid black;
+  content: '';
+}

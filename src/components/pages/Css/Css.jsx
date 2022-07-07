@@ -1,9 +1,11 @@
 import './Css.css';
 
 function Css() {
+  const colorPrimary = '#2765F0'
+
   return (
     <main>
-      <h1>Aide-mémoire CSS</h1>
+      <h1>Aide-mémoire <span style={{color: colorPrimary}}>CSS</span></h1>
 
       <h2>Autres liens</h2>
       <ul>

@@ -1,11 +1,9 @@
+
 .layout-main {
-  margin: 30px 80px 100px 80px;
+  padding: 30px 80px 100px 80px;
+  background-color: #F7F7F7;
 }
 
 h1 {
   text-align: center;
-}
-
-.layout {
-  margin: 0;
 }

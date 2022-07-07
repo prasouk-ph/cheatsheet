@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { CopyBlock, dracula } from "react-code-blocks";
 import './CodeBlock.css';
 
-function CodeBlock({ title, syntaxes, exemples }) {
+function CodeBlock({ title, syntaxes, exemples, color }) {
   const [isActive, setIsActive] = useState(false)
 
   return (
-    <div className='block'>
+    <div className='block' style={{background: color}}>
       <h3>{title}</h3>
 
       <h4>{syntaxes.length > 1 ? "Syntaxes" : "Syntaxe"}</h4>

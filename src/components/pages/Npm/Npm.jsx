@@ -1,9 +1,11 @@
 import './Npm.css';
 
 function Npm() {
+  const colorPrimary = '#CB3433'
+
   return (
     <main>
-      <h1>Aide-mémoire Npm</h1>
+      <h1>Aide-mémoire <span style={{color: colorPrimary}}>Npm</span></h1>
 
       <h2>Autres liens</h2>
       <ul>

@@ -54,6 +54,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding: 0.8em;
   /* to prevent menu scrolling should be <= 96% */
   height: 96% !important;
+  text-align: center;
 }
 
 /* Individual item */
@@ -62,6 +63,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   color: white;
   text-decoration: none;
   font-weight: bold;
+  margin: 40px 0;
 }
 
 .bm-item:hover {

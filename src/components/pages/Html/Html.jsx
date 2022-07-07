@@ -1,9 +1,11 @@
 import './Html.css';
 
 function Html() {
+  const colorPrimary = '#E0693A'
+
   return (
     <main>
-      <h1>Aide-mémoire HTML</h1>
+      <h1>Aide-mémoire <span style={{color: colorPrimary}}>HTML</span></h1>
 
       <h2>Autres liens</h2>
       <ul>

@@ -1,9 +1,11 @@
 import './Regex.css';
 
 function Regex() {
+  const colorPrimary = 'grey'
+
   return (
     <main>
-      <h1>Aide-mémoire Regex</h1>
+      <h1>Aide-mémoire <span style={{color: colorPrimary}}>Regex</span></h1>
 
       <h2>Autres liens</h2>
       <ul>
